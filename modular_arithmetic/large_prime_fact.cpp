@@ -31,17 +31,26 @@ int main()
 
     sieve();
     filter_prime();
-    int num = 12;
+    int num;
+    cin >> num;
+    int max_div = 1;
     for (int i = 0; i < prime_len; i++)
     {
         int p = all_prime[i];
         // cout << p << " ";
+        int count = 1;
         while (num % p == 0)
         {
             num = num / p;
-            cout << p << " ";
+            count++;
+        }
+        if (count != 1)
+        {
+            cout << p << "^" << count << endl;
+            max_div *= count;
+            count = 1;
         }
     }
-
+    cout << max_div << endl;
     return 0;
 }
